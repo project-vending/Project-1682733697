@@ -1,0 +1,17 @@
+python
+import csv
+
+# Define the data as a list of dictionaries with keys as the column names
+data = [
+    {"timestamp": "2022-03-02 08:32:00", "source": "sensor1", "value": 12.4},
+    {"timestamp": "2022-03-02 08:33:00", "source": "sensor2", "value": 10.2},
+    {"timestamp": "2022-03-02 08:34:00", "source": "sensor1", "value": 11.8},
+    # Add more data here
+]
+
+# Write the data to the csv file
+with open("realtime_dashboard_project/data/streaming_data.csv", "w", newline="") as csvfile:
+    fieldnames = data[0].keys()
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerows(data)
